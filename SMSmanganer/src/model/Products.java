@@ -9,5 +9,8 @@ package model;
  * @author kien3
  */
 public class Products {
+    private int pcode;
+    private double price;
+            
     
 }
