@@ -13,9 +13,6 @@ public class ProductFileReader {
     private Scanner can = new Scanner(System.in);
 
     public List<Products> readProductsFromFile(String filePath, Linkedproject list){
-
-        
-  
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
 

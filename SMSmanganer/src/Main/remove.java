@@ -11,6 +11,8 @@ import file.ProductFileReader;
 import java.util.Scanner;
 import model.Products;
 import controler.*;
+import java.awt.Choice;
+import java.util.InputMismatchException;
 
 /**
  *
@@ -40,8 +42,10 @@ public class remove {
             System.out.println("4.Delete by pcode");
             System.out.println("5.Sort by pcode");
             System.out.println("6.Add before position k <-> delete position k");
-            int choice = v.nextInt();
+            
             try {
+                int choice = v.nextInt();
+                v.nextLine();
                 switch (choice) {
                     case 1:
                         Node k = pro.head;
@@ -56,26 +60,31 @@ public class remove {
                         addend();
                         break;
                     case 3:
-                        System.out.println("Enter character :");
+                        System.out.println("Enter pcode or name :");
                         Scanner p = new Scanner(System.in);
                         String l = p.nextLine();
                         pro.sereach(pro, l);
                         break;
-                    case 6:
-                        System.out.println("Enter position :");
-                        Scanner o = new Scanner(System.in);
-                        int n = o.nextInt();
-                        System.out.println("enter product:");
-                        Products s = a.insertData(pro);
+                    case 4:
+                        System.out.println("Enter Pcode :");
+                        Scanner z = new Scanner(System.in);
+                        String i = z.nextLine();
+                        Node deles = pro.sereach(pro, i);
+                        pro.delete(deles);
+                        pro.saveToFile(filess);
+                        break;
+                    case 5:
 
-                        o.nextLine();
-                        pro.insertAfter(s, n);
+                        break;
+                    case 6:
+                        addanddelePos();
                         break;
 
                 }
 
-            } catch (NumberFormatException e) {
-                System.out.println(e);
+            } catch (Exception e) {
+                System.out.println("sai dinh dang hoac lua chon!");
+                v.nextLine();
             }
 
         } while (true);
@@ -90,31 +99,86 @@ public class remove {
             System.out.println("1. addFirst");
             System.out.println("2. addLast");
             System.out.println("3.exit!");
-            choice = n.nextInt();
+            try {
+                choice = n.nextInt();
+                switch (choice) {
 
-            switch (choice) {
-                case 1:
-                    Products add = a.insertData(pro);
-                    if (add != null) {
-                        pro.addFisrt(add);
-                        pro.saveToFile(filess);
-                    }
-                    break;
-                case 2:
-                    Products end = a.insertData(pro);
-                    if (end != null) {
-                        pro.addLast(end);
-                        pro.saveToFile(filess);
-                    }
-                    break;
-                case 3:
-                    return;
+                    case 1:
+                        Products add = a.insertData(pro);
+                        if (add != null) {
+                            pro.addFisrt(add);
+                            pro.saveToFile(filess);
+                        }
+                        break;
+                    case 2:
+                        Products end = a.insertData(pro);
+                        if (end != null) {
+                            pro.addLast(end);
+                            pro.saveToFile(filess);
+                        }
+                        break;
+                    case 3:
+                        return;
 
-                default:
-                    throw new AssertionError();
+                    default:
+                        throw new AssertionError();
+                }
+
+                
+                
+            } catch (Exception e) {
+                System.out.println("sai dinh dang!");
+                break;
+            }
+            
+        } while (true);
+    }
+
+    public void addanddelePos() {
+        Scanner y = new Scanner(System.in);
+        do {
+            System.out.println("1.Add before position k");
+            System.out.println("2.delete position k");
+            System.out.println("3.exit!");
+
+            try {
+                int choice = y.nextInt();
+                switch (choice) {
+
+                    case 1:
+                        System.out.println("Enter position :");
+                        Scanner o = new Scanner(System.in);
+                        int n = o.nextInt();
+                        o.nextLine();
+                        System.out.println("enter product:");
+                        Products s = a.insertData(pro);
+                        pro.insertAfter(s, n);
+                        pro.saveToFile(filess);
+                        break;
+
+                    case 2:
+                        System.out.println("Enter positon :");
+                        Scanner z = new Scanner(System.in);
+                        int l = z.nextInt();
+
+                        pro.deleteBypos(l);
+                        pro.saveToFile(filess);
+
+                        break;
+                    case 3:
+                        return;
+
+                    default:
+                        throw new AssertionError();
+                }
+
+            } catch (InputMismatchException e) {
+                System.out.println("sai dinh dang!");
+                break;
             }
 
         } while (true);
+
     }
 
 }

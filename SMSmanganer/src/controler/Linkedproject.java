@@ -15,7 +15,7 @@ import model.Products;
  * @author kien3
  */
 public class Linkedproject {
-
+    
     public Node head, tail;
 
     /**
@@ -24,52 +24,52 @@ public class Linkedproject {
     boolean isEmpty() {
         return (head == null);
     }
-
+    
     public void clear() {
         head = tail = null;
     }
-
+    
     public void addLast(Products p) {
         if (isEmpty()) {
             head = tail = new Node(p);
-
+            
         } else {
             Node q = new Node(p);
             tail.next = q;
             tail = q;
-
+            
         }
     }
-
+    
     public void visit(Node p) {
         System.out.println(p.data + " ");
-
+        
     }
-
+    
     public String traverse() {
         Node p = head;
         while (p != null) {
             visit(p);
             p = p.next;
         }
-
+        
         System.out.println();
         return null;
     }
-
+    
     public void addFisrt(Products o) {
         if (isEmpty()) {
             head = tail = new Node(o);
-
+            
         } else {
             Node l = new Node(o);
             l.next = head;
             head = l;
-
+            
         }
-
+        
     }
-
+    
     public Node sereach(Linkedproject a, String u) {
         Node p = a.head;
         while (p.next != null) {
@@ -79,36 +79,79 @@ public class Linkedproject {
                 return p;
             }
             p = p.next;
-
+            
         }
         System.out.println(" ko tim thay");
         return null;
-
+        
+    }
+    
+    public void delete(Node p) {
+        if (head == null || p == null) {
+            return;
+        }
+        if (p == head) {
+            System.out.println("da xoa node:" + p.data);
+            head = head.next;
+            return;
+            
+        }
+        Node pre = head;
+        while (pre != null && pre.next != p) {
+            pre = pre.next;
+        }
+        if (pre == null) {
+            System.out.println("khong tim thay!");
+            return;
+        } else {
+            pre.next = p.next;
+            System.out.println("da xoa node:" + p.data);
+        }
+        
     }
 
+    public void deleteBypos(int p) {
+        Node r = head;
+        if( p < 1){
+            return;
+        }
+        int count = 1;
+        while (r != null) {
+            
+            if (count == p) {
+                delete(r);
+                
+            }
+            
+            r = r.next;
+            count++;
+        }
+        
+    }
+    
     public void insertAfter(Products x, int k) {
         if (k <= 0 || head == null) {
             addFisrt(x);
-
+            return;
         }
         Node j = head;
-        int pos = 0;
-        while (j != null && pos < k - 1) {
+        int pos = 1;
+        while (j != null && pos < k) {
             j = j.next;
             pos++;
-
         }
         if (j.next == null) {
             addLast(x);
+            return;
         } else {
             Node newNode = new Node(x);
             newNode.next = j.next;
             j.next = newNode;
-
+            
         }
-
+        
     }
-
+    
     public void saveToFile(String filePath) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
             Node p = head;
@@ -120,10 +163,10 @@ public class Linkedproject {
                 bw.newLine();
                 p = p.next;
             }
-            System.out.println("Danh sách đã lưu vào file.");
+            System.out.println("da cap nhat danh sach txt!");
         } catch (IOException e) {
             System.out.println("Lỗi ghi file: " + e.getMessage());
         }
     }
-
+    
 }
