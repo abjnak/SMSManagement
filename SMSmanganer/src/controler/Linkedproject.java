@@ -74,7 +74,7 @@ public class Linkedproject {
         Node p = a.head;
         while (p.next != null) {
             Products k = (Products) p.data;
-            if (k.getPcode().endsWith(u) || k.getName().endsWith(u)) {
+            if (k.getPcode().equals(u) || k.getName().equals(u)) {
                 System.out.println(" tim thay :" + p.data);
                 return p;
             }
@@ -86,16 +86,24 @@ public class Linkedproject {
 
     }
 
-    public void insertAfter(Node p, Products x) {
+    public void insertAfter(Products x, int k) {
+        if (k <= 0 || head == null) {
+            addFisrt(x);
 
-        {
-            if (p == tail) {
-                addLast(x);
-            } else {
-                Node q = new Node(x, p);
-                q.next = p.next;
-                p.next = q;
-            }
+        }
+        Node j = head;
+        int pos = 0;
+        while (j != null && pos < k - 1) {
+            j = j.next;
+            pos++;
+
+        }
+        if (j.next == null) {
+            addLast(x);
+        } else {
+            Node newNode = new Node(x);
+            newNode.next = j.next;
+            j.next = newNode;
 
         }
 

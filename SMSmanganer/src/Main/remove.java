@@ -62,12 +62,15 @@ public class remove {
                         pro.sereach(pro, l);
                         break;
                     case 6:
-                        
-                        
+                        System.out.println("Enter position :");
+                        Scanner o = new Scanner(System.in);
+                        int n = o.nextInt();
+                        System.out.println("enter product:");
+                        Products s = a.insertData(pro);
+
+                        o.nextLine();
+                        pro.insertAfter(s, n);
                         break;
-                        
-                        
-                        
 
                 }
 
