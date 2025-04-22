@@ -1,7 +1,7 @@
-P200,s,g,e,a,1990,2,4444.0
-,P006,adg, ,a,1999,10,2423.0
-P002,A,AG, ,l,100,1,333.0
-P008, ,g,g,a,199,2,222.0
-P101, ,g,e,j,100,2,777.0
-P899,sg,q,g,q,133,100,333.0
-P005,Pulppy Tissue,Pulppy,Pack,Household,120,60,15000
+p999,e,?,g,d,344,2,1.0
+P001,Apple,iFruit,kg,Food,100,20,2.5
+P002,Banana,iFruit,kg,Food,80,10,1.2
+P003,Milk,Vinamilk,l,Drink,60,15,1.8
+P004,Bread,Bakery,pcs,Food,50,5,0.8
+P005,Cola,CocaCola,can,Drink,70,25,1.0
+p88,s,d,a,f,333,2,1.0

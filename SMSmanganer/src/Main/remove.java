@@ -4,12 +4,13 @@
  */
 package Main;
 
+import Node.Node;
+
 import file.ProductFileReader;
-import java.util.List;
+
 import java.util.Scanner;
 import model.Products;
 import controler.*;
-import static file.ProductFileReader.readProductsFromFile;
 
 /**
  *
@@ -17,10 +18,14 @@ import static file.ProductFileReader.readProductsFromFile;
  */
 public class remove {
 
+    public Node head, tail;
     String filess = "products.txt";
     Linkedproject pro = new Linkedproject();
     ProductFileReader a = new ProductFileReader();
-    List<Products> proi = readProductsFromFile(filess);
+
+    public remove() {
+        a.readProductsFromFile(filess, pro);
+    }
 
     public void select() {
 
@@ -39,12 +44,30 @@ public class remove {
             try {
                 switch (choice) {
                     case 1:
-                        pro.traverse();
+                        Node k = pro.head;
+                        while (k != null) {
+                            System.out.println("products: " + k.data);
+                            k = k.next;
+                        }
+
                         break;
 
                     case 2:
                         addend();
                         break;
+                    case 3:
+                        System.out.println("Enter character :");
+                        Scanner p = new Scanner(System.in);
+                        String l = p.nextLine();
+                        pro.sereach(pro, l);
+                        break;
+                    case 6:
+                        
+                        
+                        break;
+                        
+                        
+                        
 
                 }
 
@@ -68,14 +91,14 @@ public class remove {
 
             switch (choice) {
                 case 1:
-                    Products add = a.insertData();
+                    Products add = a.insertData(pro);
                     if (add != null) {
                         pro.addFisrt(add);
                         pro.saveToFile(filess);
                     }
                     break;
                 case 2:
-                    Products end = a.insertData();
+                    Products end = a.insertData(pro);
                     if (end != null) {
                         pro.addLast(end);
                         pro.saveToFile(filess);

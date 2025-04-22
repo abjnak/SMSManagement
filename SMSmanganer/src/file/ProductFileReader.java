@@ -12,9 +12,10 @@ public class ProductFileReader {
     protected Node head, tail;
     private Scanner can = new Scanner(System.in);
 
-    public static List<Products> readProductsFromFile(String filePath) {
-        List<Products> productsa = new ArrayList<>();
+    public List<Products> readProductsFromFile(String filePath, Linkedproject list){
 
+        
+  
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
 
@@ -33,7 +34,7 @@ public class ProductFileReader {
                         double price = Double.parseDouble(parts[7]);
 
                         Products product = new Products(pcode, name, maker, unit, category, quantity, saled, price);
-                        productsa.add(product);
+                        list.addLast(product);
 
                     } catch (NumberFormatException e) {
                         System.out.println("Lỗi định dạng số: " + line);
@@ -45,37 +46,29 @@ public class ProductFileReader {
         } catch (IOException e) {
             System.out.println("Lỗi đọc file: " + e.getMessage());
         }
+        return null;
 
-        return productsa;
     }
 
-    public void loadFromFile(String filePath) {
-        Linkedproject m = new Linkedproject();
-        List<Products> list = ProductFileReader.readProductsFromFile(filePath);
-        for (Products p : list) {
-            m.addLast(p); // Đưa vào danh sách liên kết
-        }
-    }
 
-    
-
-    public Products insertData() {
-        String file = "products.txt";
-
-        List<Products> proi = ProductFileReader.readProductsFromFile(file);
+    public Products insertData(Linkedproject m ) {
+         
         try {
             System.out.println("Enter pcode:");
             String pcode = can.nextLine();
-             
+           
             System.out.println("Enter name:");
             String name = can.nextLine();
 
             System.out.println("Enter market:");
             String market = can.nextLine();
+            
             System.out.println("Enter unit:");
             String unit = can.nextLine();
+            
             System.out.println("Enter catergory:");
             String catergory = can.nextLine();
+            
             System.out.println("Enter quality:");
             int quality = can.nextInt();
             can.nextLine();
@@ -83,17 +76,23 @@ public class ProductFileReader {
             System.out.println("Enter sale:");
             int sale = can.nextInt();
             can.nextLine();
+            
             System.out.println("Enter price:");
             double price = can.nextDouble();
+            can.nextLine();
             Boolean vali = true;
 
-            for (Products products : proi) {
-                if (products.getPcode().equalsIgnoreCase(pcode)) {
-                    System.out.println("ma pcode da ton tai!");
+            Node no = m.head;
+            while (no != null) {
+                Products p = (Products) no.data;
+                if (p.getPcode().equals(pcode)) {
+                    System.out.println("pcode da ton tai!");
                     vali = false;
                     break;
                 }
+                no = no.next;
             }
+
             if (quality <= 0) {
                 System.out.println("enter quality must > 0");
                 vali = false;

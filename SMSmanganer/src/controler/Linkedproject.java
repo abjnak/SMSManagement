@@ -32,7 +32,7 @@ public class Linkedproject {
     public void addLast(Products p) {
         if (isEmpty()) {
             head = tail = new Node(p);
-           
+
         } else {
             Node q = new Node(p);
             tail.next = q;
@@ -43,37 +43,39 @@ public class Linkedproject {
 
     public void visit(Node p) {
         System.out.println(p.data + " ");
-       
+
     }
 
-   public String traverse() {
+    public String traverse() {
         Node p = head;
         while (p != null) {
             visit(p);
             p = p.next;
         }
-        
+
         System.out.println();
         return null;
     }
 
-   public void addFisrt(Products o ) {
+    public void addFisrt(Products o) {
         if (isEmpty()) {
             head = tail = new Node(o);
-        
+
         } else {
             Node l = new Node(o);
             l.next = head;
             head = l;
 
         }
-        
+
     }
-   public Node sereach(Products a) {
-        Node p = head;
+
+    public Node sereach(Linkedproject a, String u) {
+        Node p = a.head;
         while (p.next != null) {
-            if (p.data.equals(a.getPcode())) {
-                System.out.println(" tim thay " + p.data);
+            Products k = (Products) p.data;
+            if (k.getPcode().endsWith(u) || k.getName().endsWith(u)) {
+                System.out.println(" tim thay :" + p.data);
                 return p;
             }
             p = p.next;
@@ -83,7 +85,23 @@ public class Linkedproject {
         return null;
 
     }
-   public void saveToFile(String filePath) {
+
+    public void insertAfter(Node p, Products x) {
+
+        {
+            if (p == tail) {
+                addLast(x);
+            } else {
+                Node q = new Node(x, p);
+                q.next = p.next;
+                p.next = q;
+            }
+
+        }
+
+    }
+
+    public void saveToFile(String filePath) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
             Node p = head;
             while (p != null) {
@@ -99,6 +117,5 @@ public class Linkedproject {
             System.out.println("Lỗi ghi file: " + e.getMessage());
         }
     }
-
 
 }

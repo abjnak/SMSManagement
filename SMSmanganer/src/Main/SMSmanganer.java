@@ -4,11 +4,7 @@
  */
 package Main;
 
-import model.*;
-import controler.*;
-import file.ProductFileReader;
 
-import java.util.List;
 
 /**
  *
@@ -21,11 +17,8 @@ public class SMSmanganer {
      */
     public static void main(String[] args) {
         remove m = new remove();
-        for (Products products : m.proi) {
-            m.pro.addLast(products);
-        }
+      
         m.select();
-            
         }
 }
         
