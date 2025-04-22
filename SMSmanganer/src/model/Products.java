@@ -17,7 +17,6 @@ public class Products {
     private String category;
     private int quantity;
     private int saled;
-
     private double price;
 
     public Products() {
