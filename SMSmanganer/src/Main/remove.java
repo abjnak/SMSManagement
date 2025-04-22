@@ -42,7 +42,7 @@ public class remove {
             System.out.println("4.Delete by pcode");
             System.out.println("5.Sort by pcode");
             System.out.println("6.Add before position k <-> delete position k");
-            
+
             try {
                 int choice = v.nextInt();
                 v.nextLine();
@@ -75,7 +75,16 @@ public class remove {
                         break;
                     case 5:
 
+                        pro.sort();
+                        Node ko = pro.head;
+                        while (ko != null) {
+                            System.out.println("products: " + ko.data);
+                            ko = ko.next;
+                        }
+                        pro.saveToFile(filess);
+
                         break;
+
                     case 6:
                         addanddelePos();
                         break;
@@ -124,13 +133,11 @@ public class remove {
                         throw new AssertionError();
                 }
 
-                
-                
             } catch (Exception e) {
                 System.out.println("sai dinh dang!");
                 break;
             }
-            
+
         } while (true);
     }
 
