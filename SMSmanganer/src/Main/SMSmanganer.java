@@ -4,7 +4,7 @@
  */
 package Main;
 
-
+import java.util.Scanner;
 
 /**
  *
@@ -17,9 +17,38 @@ public class SMSmanganer {
      */
     public static void main(String[] args) {
         remove m = new remove();
-      
-        m.select();
-        }
+        Scanner r = new Scanner(System.in);
+
+        do {
+
+            System.out.println("1.Prodeuct");
+            System.out.println("2.Customer");
+            System.out.println("3.Order");
+            try {
+
+                int choice = r.nextInt();
+                r.nextLine();
+                switch (choice) {
+
+                    case 1:
+                        m.select();
+                        break;
+                    case 2:
+
+                        break;
+                    case 3:
+
+                        break;
+                    default:
+                        throw new AssertionError();
+                }
+
+            } catch (Exception e) {
+                System.out.println("lua tron lai!");
+                r.nextLine();
+            }
+
+        } while (true);
+
+    }
 }
-        
-       
