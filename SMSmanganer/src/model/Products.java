@@ -100,8 +100,8 @@ public class Products {
 
     @Override
     public String toString() {
-        return "Products{" + "pcode=" + pcode + ", name=" + name + ", maker=" + maker + ", unit=" + unit + ", category=" + category + ", quantity=" + quantity + ", saled=" + saled + ", price=" + price + '}';
+        return   pcode + "," + name + "," + maker + "," + unit + "," + category + "," + quantity + "," + saled + "," + price;
     }
-     
+    
 
 }

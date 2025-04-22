@@ -4,6 +4,12 @@
  */
 package Main;
 
+import model.*;
+import controler.*;
+import file.ProductFileReader;
+
+import java.util.List;
+
 /**
  *
  * @author kien3
@@ -14,7 +20,13 @@ public class SMSmanganer {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
+        remove m = new remove();
+        for (Products products : m.proi) {
+            m.pro.addLast(products);
+        }
+        m.select();
+            
+        }
 }
+        
+       
