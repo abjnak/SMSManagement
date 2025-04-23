@@ -17,6 +17,7 @@ public class SMSmanganer {
      */
     public static void main(String[] args) {
         remove m = new remove();
+        customer_main mn = new customer_main();
         Scanner r = new Scanner(System.in);
 
         do {
@@ -34,6 +35,7 @@ public class SMSmanganer {
                         m.select();
                         break;
                     case 2:
+                        mn.cus_main();
 
                         break;
                     case 3:

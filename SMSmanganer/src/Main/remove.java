@@ -36,12 +36,13 @@ public class remove {
         Scanner v = new Scanner(System.in);
         do {
 
-            System.out.println("1.display");
+            System.out.println("1.display file ");
             System.out.println("2.Add bengin or ends");
             System.out.println("3.Search by pcode <-> serach by name <-> Search ordered by pcode ");
             System.out.println("4.Delete by pcode");
             System.out.println("5.Sort by pcode");
             System.out.println("6.Add before position k <-> delete position k");
+            System.out.println("7.exit!");
 
             try {
                 int choice = v.nextInt();
@@ -88,6 +89,8 @@ public class remove {
                     case 6:
                         addanddelePos();
                         break;
+                    case 7:
+                        return;
 
                 }
 

@@ -41,22 +41,6 @@ public class Linkedproject {
         }
     }
 
-    public void visit(Node p) {
-        System.out.println(p.data + " ");
-
-    }
-
-    public String traverse() {
-        Node p = head;
-        while (p != null) {
-            visit(p);
-            p = p.next;
-        }
-
-        System.out.println();
-        return null;
-    }
-
     public void addFisrt(Products o) {
         if (isEmpty()) {
             head = tail = new Node(o);

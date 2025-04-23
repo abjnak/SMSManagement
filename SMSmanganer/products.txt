@@ -18,3 +18,4 @@ P017,Projector Mini,Epson,piece,Electronics,28,10,600.0
 P018,Smart Lock,August,piece,Security,33,15,200.0
 P019,Monitor 27",Asus,piece,Electronics,38,18,320.0
 P020,Desk Lamp,Xiaomi,piece,Home,65,30,35.0
+P889,kk,aa,ff,rr,990,33,122.0
